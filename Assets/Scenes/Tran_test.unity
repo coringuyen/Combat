@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1612579011}
+      - m_Target: {fileID: 0}
         m_MethodName: idle_to_block
         m_Mode: 1
         m_Arguments:
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1612579011}
+      - m_Target: {fileID: 0}
         m_MethodName: init_to_idle
         m_Mode: 1
         m_Arguments:
@@ -639,10 +639,10 @@ GameObject:
   - 33: {fileID: 1612579014}
   - 65: {fileID: 1612579013}
   - 23: {fileID: 1612579012}
-  - 114: {fileID: 1612579011}
-  - 114: {fileID: 1612579016}
   - 82: {fileID: 1612579018}
   - 114: {fileID: 1612579017}
+  - 114: {fileID: 1612579019}
+  - 114: {fileID: 1612579011}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -716,17 +716,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &1612579016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1612579010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f326b79ec0cb20542a52f7d904ee10a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1612579017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,6 +799,18 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1612579019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1612579010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2f980cb4fe149458dcdfd20e0db415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_health: 0
 --- !u!1 &1639639601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1020,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1612579011}
+      - m_Target: {fileID: 0}
         m_MethodName: idle_to_attack
         m_Mode: 1
         m_Arguments:

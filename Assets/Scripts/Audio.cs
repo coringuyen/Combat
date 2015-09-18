@@ -7,11 +7,29 @@ public class Audio : MonoBehaviour {
     public AudioClip block_audio;
     public AudioClip dead_audio;
 
+    //FSM.attack Attack;
+    //FSM.block Block;
+    //FSM.death Death;
 
-    public void Attack_Audio(GameObject player)
+    //void Start()
+    //{
+    //    Attack += Attack_Audio;
+    //    Block += Block_Audio;
+    //    Death += Dead_Audio;
+    //}
+
+    public void Attack_Audio(GameObject player, bool a_switch)
     {
-        player.GetComponent<AudioSource>().clip = attack_audio;
-        player.GetComponent<AudioSource>().Play();
+        if (player && a_switch == true)
+        {
+            player.GetComponent<AudioSource>().clip = attack_audio;
+            player.GetComponent<AudioSource>().Play();
+        }
+
+        else if (player && a_switch == false)
+        {
+            player.GetComponent<AudioSource>().Stop();
+        }
     }
 
     public void Block_Audio(GameObject player)
