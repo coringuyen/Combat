@@ -7,6 +7,6 @@ public class playerStat : MonoBehaviour {
 
 	void Start ()
     {
-        player_health = 10;
+        player_health = 100;
 	}
 }
