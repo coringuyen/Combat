@@ -5,20 +5,21 @@ using UnityEngine.UI;
 public class Action : MonoBehaviour
 {
     public GameObject players;
-    //public GameObject enemy;
-    public Button Play;
-    int startingHealth = 100;
-    int currentHealth;
-    int damage;
-    bool isDead; // enemy is dead
+    public Button Play;    
+    int currentHealth, damage, startingHealth = 100;
+
+    FSM.attack a_Attack;
+    FSM.block a_Block;
+    FSM.death a_Death;
+    FSM.init a_Init;
 	void Start ()
     {
         currentHealth = startingHealth;
-        //Init(players);
-        //Idle(players);
-        //Attack(players);
-        //Block(players);
-        Death(players);
+        a_Init += Init;
+        Idle(players);
+        a_Attack += Attack;
+        a_Block += Block;
+        a_Death += Death;
     }
 
     void Init(GameObject player)
@@ -36,19 +37,34 @@ public class Action : MonoBehaviour
     {
         damage = 10;
         currentHealth -= damage;
-        print("Hit");
+        Debug.Log("Hit");
     }
 
    public void Block(GameObject player)
     {
-        damage = 0;
-        currentHealth -= damage;
-        print("Block DA STUFF!");
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            damage = 0;
+            currentHealth -= damage;
+            Debug.Log("Block DA STUFF!");
+        }
     }
 
     public void Death(GameObject player)
     {
         currentHealth = 0;
-        print("Dead person");
+        Debug.Log("Dead person");
     }
 }
+
+
+
+
+//public GameObject enemy; 
+//startingHealth = 100;
+
+//Init(players);
+//Idle(players);
+//Attack(players);
+//Block(players);
+//Death(players);
