@@ -8,18 +8,9 @@ public class Action : MonoBehaviour
     public Button Play;    
     int currentHealth, damage, startingHealth = 100;
 
-    FSM.attack a_Attack;
-    FSM.block a_Block;
-    FSM.death a_Death;
-    FSM.init a_Init;
 	void Start ()
     {
-        currentHealth = startingHealth;
-        a_Init += Init;
-        Idle(players);
-        a_Attack += Attack;
-        a_Block += Block;
-        a_Death += Death;
+
     }
 
     void Init(GameObject player)
