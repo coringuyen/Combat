@@ -6,8 +6,8 @@ using System.Collections.Generic;
 
 public class FSM<T>
 {
-    // add functions user want to happen between the states 
-    delegate void functions_todothing();
+    // store delegate
+    Dictionary<string, System.Delegate> functions_delegate = new Dictionary<string, System.Delegate>();
 
     List<T> list_state = new List<T>();
     int count = 0; // count the item that got add to the list
@@ -29,16 +29,32 @@ public class FSM<T>
         }
     }
 
+    public void addDelegate(string name_delegate, System.Delegate a_delegate)
+    {
+        // check if this delegate exist
+        if (functions_delegate.ContainsValue(a_delegate))
+        {
+            Debug.Log(a_delegate.ToString() + "Already Exist");
+        }
+
+        else
+            functions_delegate.Add(name_delegate, a_delegate);
+
+    }
+
+
     // make a transition between 2 state
-    public void makeTransition(T current_state, T goto_state) 
+    public void makeTransition(T current_state, T goto_state, System.Delegate a_delegate) 
     {
         // this is to check if both of the elements are on the list
-        if (list_state.Contains(current_state) && list_state.Contains(goto_state)) 
+        if (list_state.Contains(current_state) && list_state.Contains(goto_state) && functions_delegate.ContainsValue(a_delegate)) 
         {
             // now current state is the state that need to go to
-            current_state = goto_state; 
-
-            // need to run funcstions
+            current_state = goto_state;
+            Debug.Log("Current state: " + current_state.ToString());
+            
+            //don't know how to use this a_delegate variable to use the user delegate, run out of time
+            // will figure out after submit the project
         }
 
         else // else if both or one of the elements are not exist on the list let the user know
