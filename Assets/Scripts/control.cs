@@ -3,17 +3,32 @@ using System.Collections;
 
 public class control : MonoBehaviour {
 
+    public delegate void minefunction();
+    minefunction function;
+
+    void addnumber()
+    {
+        int result;
+        result = 6 + 4;
+        print("Result" + result.ToString());
+    }
+
     enum state { idle, attack, death };
     void Start()
     {
+        function += addnumber;
+        function.Clone();
+        
+        //function(5);
         // test out FSM
         FSM<state> mineState = new FSM<state>();
         mineState.addState(state.idle);
         mineState.addState(state.idle);
         mineState.addState(state.attack);
         mineState.addState(state.attack);
-
-        mineState.makeTransition(state.idle, state.attack);
+        mineState.addDelegate("name", function);
+        mineState.makeTransition(state.idle, state.attack, function);
+        
     }
 
     public void init_to_idle()
