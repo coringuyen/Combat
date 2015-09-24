@@ -12,8 +12,8 @@ public class control : MonoBehaviour {
         mineState.addState(state.idle);
         mineState.addState(state.attack);
         mineState.addState(state.attack);
-
-        mineState.makeTransition(state.idle, state.attack);
+        
+       // mineState.makeTransition(state.idle, state.attack);
     }
 
     public void init_to_idle()

@@ -8,6 +8,9 @@ public class FSM<T>
 {
     // store delegate
     Dictionary<string, System.Delegate> functions_delegate = new Dictionary<string, System.Delegate>();
+   
+    delegate void Delegate_of_delegate();
+    //Delegate_of_delegate delegate_of_delegate;
 
     List<T> list_state = new List<T>();
     int count = 0; // count the item that got add to the list
@@ -43,16 +46,22 @@ public class FSM<T>
     }
 
 
+    //static void addFunctions(Delegate_of_delegate delegates)
+    //{
+        
+    //}
+
     // make a transition between 2 state
-    public void makeTransition(T current_state, T goto_state, System.Delegate a_delegate) 
+    public void makeTransition(T current_state, T goto_state)
     {
         // this is to check if both of the elements are on the list
-        if (list_state.Contains(current_state) && list_state.Contains(goto_state) && functions_delegate.ContainsValue(a_delegate)) 
+        if (list_state.Contains(current_state) && list_state.Contains(goto_state)) 
         {
             // now current state is the state that need to go to
             current_state = goto_state;
             Debug.Log("Current state: " + current_state.ToString());
-            
+
+            //delegate_of_delegate();
             //don't know how to use this a_delegate variable to use the user delegate, run out of time
             // will figure out after submit the project
         }
