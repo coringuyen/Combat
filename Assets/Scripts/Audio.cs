@@ -1,48 +1,19 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 
-public class Audio : MonoBehaviour {
+public class Audio : MonoBehaviour
+{
+    List<AudioClip> music_clip = new List<AudioClip>();
 
-    public AudioClip attack_audio;
-    public AudioClip block_audio;
-    public AudioClip dead_audio;
+    public AudioSource radio;
+    public AudioClip unit_sound;
 
-    //FSM.attack Attack;
-    //FSM.block Block;
-    //FSM.death Death;
-
-    //void Start()
-    //{
-    //    Attack += Attack_Audio;
-    //    Block += Block_Audio;
-    //    Death += Dead_Audio;
-    //}
-
-    public void Attack_Audio(GameObject player, bool a_switch)
+    public void Play_Audio()
     {
-        if (player && a_switch == true)
-        {
-            player.GetComponent<AudioSource>().clip = attack_audio;
-            player.GetComponent<AudioSource>().Play();
-        }
-
-        else if (player && a_switch == false)
-        {
-            player.GetComponent<AudioSource>().Stop();
-        }
+        radio.clip = unit_sound;
+        music_clip.Add(unit_sound);
+        radio.Play();
     }
-
-    public void Block_Audio(GameObject player)
-    {
-        player.GetComponent<AudioSource>().clip = block_audio;
-        player.GetComponent<AudioSource>().Play();
-    }
-
-    public void Dead_Audio(GameObject player)
-    {
-        player.GetComponent<AudioSource>().clip = dead_audio;
-        player.GetComponent<AudioSource>().Play();
-    }
-
-
+	
 }
