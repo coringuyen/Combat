@@ -1,4 +1,4 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public delegate void CallBack();
+public delegate void Callback();
