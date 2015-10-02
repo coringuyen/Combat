@@ -4,15 +4,50 @@ using System.Collections;
 public class control : MonoBehaviour
 {
 
-    enum state { idle, attack, death };
+
+    FSM<state> mineState = new FSM<state>();
+   
+
+    enum state { idle, talk, leave };
     void Start()
     {
-        // test out FSM
-        FSM<state> mineState = new FSM<state>();
-        mineState.addState(state.idle);
-        mineState.addState(state.attack);
         
-       // mineState.makeTransition(state.idle, state.attack);
+        mineState.addState(state.idle);
+        mineState.addState(state.talk);
+        mineState.addState(state.leave);
+
+        mineState.current_state = state.idle;
+        Debug.Log(mineState.current_state.ToString());
+        mineState.addTransition(state.idle, state.talk, hello);
+        mineState.addTransition(state.talk, state.leave, bye);
+
+    }
+    void Update()
+    {
+        test();
+    }
+
+    void test()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            mineState.ChangeState(state.talk);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            mineState.ChangeState(state.leave);
+        }
+    }
+
+    void hello()
+    {
+        Debug.Log("Hello!");
+    }
+
+    void bye()
+    {
+        Debug.Log("GoodBye!");
     }
 
     public void init_to_idle()

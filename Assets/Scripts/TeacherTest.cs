@@ -21,8 +21,8 @@ public class TeacherTest : MonoBehaviour {
             Debug.Log("add state " + s.ToString());
         }
 
-        //_fsm.current_state = State.morning;
-        //Debug.Log("Current State:" + _fsm.current_state.ToString());
+        _fsm.current_state = State.morning;
+        Debug.Log("Current State:" + _fsm.current_state.ToString());
         _fsm.addTransition(State.morning, State.lunch, helpTran);
         _fsm.addTransition(State.lunch, State.end, GoHome);
     }
@@ -44,7 +44,7 @@ public class TeacherTest : MonoBehaviour {
     delegate void del();
     del Del;
 
-    Dictionary<string, Callback> transitionTable = new Dictionary<string, Callback>();
+    Dictionary<string, CallBack> transitionTable = new Dictionary<string, CallBack>();
 
     public string transition = "morning->lunch";
 
