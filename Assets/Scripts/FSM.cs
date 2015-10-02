@@ -38,7 +38,7 @@ public class FSM<T>
         if (list_state.Contains(current) && list_state.Contains(go))
         {
             // create a key for the dictionary
-            key_name = current.ToString() + "to" + go.ToString();
+            key_name = current.ToString() + " to " + go.ToString();
             transitionTable.Add(key_name, function);
         }
         else // else if both or one of the elements are not exist on the list let the user know
