@@ -9,7 +9,7 @@ public class FSM<T>
     //this is the dictionary of transitions that will execute whenever the statemachine transitions
     //key: will be the name of the transition
     //value: will be the delegate that is executed when the transition occurs.
-    Dictionary<string, CallBack> transitionTable = new Dictionary<string, CallBack>();
+    Dictionary<string, Callback> transitionTable = new Dictionary<string, Callback>();
 
     public T current_state; // keep track of the current state
     private string key_name; // key for dictionary
@@ -32,7 +32,7 @@ public class FSM<T>
     }
 
     // add transition
-    public void addTransition(T current, T go, CallBack function)
+    public void addTransition(T current, T go, Callback function)
     {
         // if both of the elements are on the list excute code 
         if (list_state.Contains(current) && list_state.Contains(go))

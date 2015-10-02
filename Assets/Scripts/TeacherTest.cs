@@ -44,7 +44,7 @@ public class TeacherTest : MonoBehaviour {
     delegate void del();
     del Del;
 
-    Dictionary<string, CallBack> transitionTable = new Dictionary<string, CallBack>();
+    Dictionary<string, Callback> transitionTable = new Dictionary<string, Callback>();
 
     public string transition = "morning->lunch";
 
