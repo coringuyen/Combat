@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class control : MonoBehaviour {
+public class control : MonoBehaviour
+{
 
     enum state { idle, attack, death };
     void Start()
@@ -9,8 +10,6 @@ public class control : MonoBehaviour {
         // test out FSM
         FSM<state> mineState = new FSM<state>();
         mineState.addState(state.idle);
-        mineState.addState(state.idle);
-        mineState.addState(state.attack);
         mineState.addState(state.attack);
         
        // mineState.makeTransition(state.idle, state.attack);
