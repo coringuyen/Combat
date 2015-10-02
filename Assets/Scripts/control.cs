@@ -3,37 +3,50 @@ using System.Collections;
 
 public class control : MonoBehaviour {
 
-    public delegate void minefunction();
-    minefunction function;
 
-    void addnumber()
-    {
-        int result;
-        result = 6 + 4;
-        print("Result" + result.ToString());
-    }
+    FSM<state> mineState = new FSM<state>();
+   
 
-    enum state { idle, attack, death };
+    enum state { idle, talk, leave };
     void Start()
     {
-        function += addnumber;
-        function.Clone();
         
-        //function(5);
-        // test out FSM
-        FSM<state> mineState = new FSM<state>();
         mineState.addState(state.idle);
-        mineState.addState(state.idle);
-        mineState.addState(state.attack);
-        mineState.addState(state.attack);
-<<<<<<< HEAD
-        mineState.addDelegate("name", function);
-        mineState.makeTransition(state.idle, state.attack, function);
-        
-=======
-        
-       // mineState.makeTransition(state.idle, state.attack);
->>>>>>> origin/master
+        mineState.addState(state.talk);
+        mineState.addState(state.leave);
+
+        mineState.current_state = state.idle;
+        Debug.Log(mineState.current_state.ToString());
+        mineState.addTransition(state.idle, state.talk, hello);
+        mineState.addTransition(state.talk, state.leave, bye);
+
+    }
+    void Update()
+    {
+        test();
+    }
+
+    void test()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            mineState.changeTo(state.talk);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            mineState.changeTo(state.leave);
+        }
+    }
+
+    void hello()
+    {
+        Debug.Log("Hello!");
+    }
+
+    void bye()
+    {
+        Debug.Log("GoodBye!");
     }
 
     public void init_to_idle()
