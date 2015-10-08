@@ -23,8 +23,8 @@ public class TeacherTest : MonoBehaviour {
 
         _fsm.current_state = State.morning;
         Debug.Log("Current State:" + _fsm.current_state.ToString());
-        _fsm.addTransition(State.morning, State.lunch, helpTran);
-        _fsm.addTransition(State.lunch, State.end, GoHome);
+        //_fsm.addTransition(State.morning, State.lunch, helpTran);
+        //_fsm.addTransition(State.lunch, State.end, GoHome);
     }
 
     //[ContextMenu("Make FSM")]
@@ -71,6 +71,7 @@ public class TeacherTest : MonoBehaviour {
     { 
         transitionTable[transition]();        
     }
+
     public void GoHome()
     {
         Debug.Log("Teacher is going home");
@@ -82,3 +83,8 @@ public class TeacherTest : MonoBehaviour {
         Debug.Log("help tran");
     }
 }
+
+
+// _fsm.addTransition(state.idle, state.start, function)
+// _fsm.changeState(T state)
+

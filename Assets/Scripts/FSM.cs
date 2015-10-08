@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,7 +9,7 @@ public class FSM<T>
     //this is the dictionary of transitions that will execute whenever the statemachine transitions
     //key: will be the name of the transition
     //value: will be the delegate that is executed when the transition occurs.
-    Dictionary<string, Callback> transitionTable = new Dictionary<string, Callback>();
+    Dictionary<string, Delegate> transitionTable = new Dictionary<string, Delegate>();
 
     public T current_state; // keep track of the current state
     private string key_name; // key for dictionary
@@ -32,7 +32,7 @@ public class FSM<T>
     }
 
     // add transition
-    public void addTransition(T current, T go, Callback function)
+    public void addTransition(T current, T go, Delegate function)
     {
         // if both of the elements are on the list excute code 
         if (list_state.Contains(current) && list_state.Contains(go))
@@ -62,7 +62,7 @@ public class FSM<T>
         // if the key is exist then execute the delegate of that key
         if (transitionTable.ContainsKey(key_name))
         {
-            transitionTable[key_name]();
+            transitionTable[key_name].DynamicInvoke();
 
             // now current state is the state that need to go to
             current_state = go;

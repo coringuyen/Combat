@@ -4,6 +4,8 @@ using System.Collections;
 public class control : MonoBehaviour
 {
 
+    delegate void hi();
+    hi Hi;
 
     FSM<state> mineState = new FSM<state>();
    
@@ -11,6 +13,8 @@ public class control : MonoBehaviour
     enum state { idle, talk, leave };
     void Start()
     {
+        Hi += hello;
+        Hi += bye;     
         
         mineState.addState(state.idle);
         mineState.addState(state.talk);
@@ -18,8 +22,8 @@ public class control : MonoBehaviour
 
         mineState.current_state = state.idle;
         Debug.Log(mineState.current_state.ToString());
-        mineState.addTransition(state.idle, state.talk, hello);
-        mineState.addTransition(state.talk, state.leave, bye);
+        mineState.addTransition(state.idle, state.talk, Hi);
+        //mineState.addTransition(state.talk, state.leave, bye);
 
     }
     void Update()
